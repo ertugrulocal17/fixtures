@@ -1,0 +1,104 @@
+<%- include('partials/_header') -%>
+      <!-- blog section start -->
+      <div class="blog_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="blog_taital">Trending Products</h1>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="blog_section_2 layout_padding">
+               <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img1.png"></div>
+                        <p class="chair_text">Chairs</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img2.png"></div>
+                        <p class="chair_text">Chair</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img3.png"></div>
+                        <p class="chair_text">Sideboard</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img4.png"></div>
+                        <p class="chair_text">Chairs</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img5.png"></div>
+                        <p class="chair_text">Chair</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img6.png"></div>
+                        <p class="chair_text">Sideboard</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img7.png"></div>
+                        <p class="chair_text">Chairs</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img8.png"></div>
+                        <p class="chair_text">Chair</p>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                     <div class="blog_box">
+                        <div class="blog_img"><img src="images/blog-img9.png"></div>
+                        <p class="chair_text">Sideboard</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="readmore_bt"><a href="#">See More</a></div>
+         </div>
+      </div>
+      <!-- blog section end -->
+      <!-- footer section start -->
+      <%- include('partials/_footer') -%>
+      <script>
+         $(document).ready(function() {
+         var owl = $('.gift_owl_carousel');
+         owl.owlCarousel({
+         items: 3,
+         loop: true,
+         margin: 10,
+         nav: true,
+         dots: false,
+         navText : ["<i class='fa fa-arrow-left'></i>","<i class='fa fa-arrow-right'></i>"],
+         autoplay: false,
+         autoplayTimeout: 3000,
+         autoplayHoverPause: true,
+         responsive: {
+         0: {
+            items: 1
+         },
+         769: {
+            items: 2,
+         },
+         992: {
+            items: 3
+         }
+         }
+         });   
+         });
+      </script>
+   </body>
+</html>
