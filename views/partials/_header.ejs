@@ -113,9 +113,7 @@
             <li class="<%= page_name === 'about' && 'active' %>">
               <a href="/about">About</a>
             </li>
-            <li class="<%= page_name === 'furnitures' && 'active' %>">
-              <a href="/furnitures">Furnitures</a>
-            </li>
+
             <li class="<%= page_name === 'products' && 'active' %>">
               <a href="/products">Products</a>
             </li>
@@ -125,12 +123,17 @@
             <li class="<%= page_name === 'contact' && 'active' %>">
               <a href="/contact">Contact Us</a>
             </li>
+            <% if(userIN) { %>
+            <li><a href="/users/dashboard">Dashboard</a></li>
+            <li><a href="/users/logout">Logout</a></li>
+            <% } %> <% if(!userIN) { %>
             <li class="<%= page_name === 'login' && 'active' %>">
-              <a href="/#">Login</a>
+              <a href="/login">Login</a>
             </li>
             <li class="<%= page_name === 'register' && 'active' %>">
-              <a href="/#">Register</a>
+              <a href="/register">Register</a>
             </li>
+            <% } %>
           </ul>
         </div>
       </div>

@@ -24,10 +24,10 @@ const ProductSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  //   category: {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Category",
-  //   },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+  },
   //   user: {
   //     type: Schema.Types.ObjectId,
   //     ref: "User",

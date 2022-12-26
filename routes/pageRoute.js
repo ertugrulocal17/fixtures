@@ -5,6 +5,8 @@ import {
   getContactPage,
   getFurnituresPage,
   getBlogPage,
+  getLoginPage,
+  getRegisterPage,
 } from "../controllers/pageController.js";
 const router = express.Router();
 
@@ -13,5 +15,7 @@ router.get("/about", getAboutPage);
 router.get("/contact", getContactPage);
 router.get("/furnitures", getFurnituresPage);
 router.get("/blog", getBlogPage);
+router.get("/login", getLoginPage);
+router.get("/register", getRegisterPage);
 
 export default router;

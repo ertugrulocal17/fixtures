@@ -1,6 +1,17 @@
 export const getIndexPage = (req, res) => {
+  const user = req.session.userId;
   res.status(200).render("index", {
     page_name: "index",
+  });
+};
+export const getLoginPage = (req, res) => {
+  res.status(200).render("login", {
+    page_name: "login",
+  });
+};
+export const getRegisterPage = (req, res) => {
+  res.status(200).render("register", {
+    page_name: "register",
   });
 };
 export const getAboutPage = (req, res) => {
