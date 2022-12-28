@@ -5,8 +5,8 @@ import {
   getAllProducts,
   getProduct,
 } from "../controllers/productController.js";
-
-router.post("/", createProduct);
+import { roleMiddleware } from "../middlewares/roleMiddleware.js";
+router.post("/", roleMiddleware(["admin"]), createProduct);
 router.get("/", getAllProducts);
 router.get("/:slug", getProduct);
 

@@ -1,12 +1,12 @@
 <%- include('partials/_header') -%>
 <!-- end header -->
-
+<% if(user) { %> <% if(user.role === 'customer'){ %>
 <div class="contactus">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <div class="title">
-          <h2>Customer:</h2>
+          <h2>Customer: <%= user.name %></h2>
         </div>
       </div>
     </div>
@@ -16,38 +16,39 @@
      <div class="container">
         <div class="row product_style_3" ">
        <!-- product -->
-
+       <% for (let i = 0; i < user.products.length; i++) { %>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
           <div class="full product">
             <div class="product_img">
               <div class="center"> <img src="/icon/p1.png" alt="#"/>
                 <div class="overlay_hover"> 
-
+                  <% if (!(user.products.includes(products._id))) {%>
                   <form method="POST" action="/products/remove">
                     <input type="hidden" name="product_id" value="<%= user.products[i].id %>"/>
                     <button class="add-bt" type="submit"><span>Remove</span></button>
                  </form>
-
+                 <% } %>
                 </div>
               </div>
             </div>
             <div class="product_detail text_align_center">
-              <p class="product_price">$ user.products[i].price %> <span class="old_price">$679.89</span></p>
-              <p class="product_descr"> user.products[i].name %> </p>
+              <p class="product_price">$<%= user.products[i].price %> <span class="old_price">$679.89</span></p>
+              <p class="product_descr"><%= user.products[i].name %> </p>
             </div>
           </div>
         </div>
+        <% } %>
          <!-- end product -->
        </div>
      </div>
 </div>
-
+<% } %> <% if(user.role === 'admin'){ %>
 <div class="contactus">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <div class="title">
-          <h2>Admin:  user.name %></h2>
+          <h2>Admin: <%= user.name %></h2>
         </div>
       </div>
     </div>
@@ -66,85 +67,9 @@
 </div>
 <div class="ourproduct">
    <div class="container">
-      <div class="m-2">
-        <!-- Flash Messages -->
-      </div>
       <div class="row product_style_3" ">
        <!-- product -->
-       <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-         <div class="full product">
-           <div class="product_img">
-             <div class="center"> <img src="/icon/p1.png" alt="#"/>
-               <div class="overlay_hover"> 
-                  <button class="add-bt m-1" data-toggle="modal" data-target="#updateProduct<%= products[i]._id %>">Edit</button> 
-                  <a class="add-bt m-1" href="/products/<%= products[i].slug %>?_method=DELETE" onclick="return confirm('ARE YOU SURE')">Delete</a> 
-              </div>
-             </div>
-           </div>
-           <div class="product_detail text_align_center">
-             <p class="product_price">$ products[i].price %> <span class="old_price">$679.89</span></p>
-             <p class="product_descr"> products[i].name %> </p>
-           </div>
-         </div>
-       </div>
-          <!-- Edit Product Modal -->
-          <div class="modal fade" id="updateProduct<%= products[i]._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel text-dark">Update Product</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form class="main_form" method="POST" action="/products/<%= products[i].slug %>?_method=PUT">
-                    <div class="row">
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <input
-                          class="form-control"
-                          placeholder="products[i].name"
-
-                          type="text"
-                          name="name"
-                        />
-                      </div>
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <input
-                          class="form-control"
-                          placeholder="products[i].price "
-                          type="text"
-                          name="price"
-                        />
-                      </div>
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <p>Category:</p>
-                        <select class="form-control p-0" name="category">
-
-                              <option value="<%= categories[i]._id %>"> categories[i].name </option>
-
-                        </select>
-                      </div>
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <textarea class="textarea" type="text" value="<%= products[i].desc %>" name="desc"><%= products[i].desc %></textarea>
-                      </div>
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <input
-                          class="form-control"
-                          value="admin"
-                          type="hidden"
-                          name="role"
-                        />
-                      </div>
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <button class="send" type="submit">Update</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+       <!-- TODO -->
      </div>
    </div>
  </div>
@@ -170,16 +95,16 @@
       </tr>
     </thead>
     <tbody>
-
+  <% for (let i=0; i< users.length; i++) { %>
       <tr>
-      <th scope="row">users[i]._id</th>
-      <td>users[i].email</td>
-      <td>users[i].role</td>
+      <th scope="row"><%=users[i]._id %></th>
+      <td><%=users[i].email %></td>
+      <td><%=users[i].role %></td>
       <td><a href="/users/<%= users[i]._id %>?_method=DELETE" 
         onclick="return confirm('ARE YOU SURE')"
         class="btn btn-danger rounded-0 text-white"><span>DELETE</span></a></td>
       </tr>
-
+  <% } %>
     </tbody>
    </table>
 </div>
@@ -215,26 +140,18 @@
       </tr>
     </thead>
     <tbody>
-
+  <% for (let i=0; i< categories.length; i++) { %>
       <tr>
-      <th scope="row">categories[i]._id</th>
-      <td>categories[i].name</td>
-      <td><a href="/categories/categoriesid" 
+      <th scope="row"><%=categories[i]._id %></th>
+      <td><%=categories[i].name %></td>
+      <td><a href="/categories/<%= categories[i]._id %>?_method=DELETE" 
         onclick="return confirm('ARE YOU SURE')"
         class="btn btn-danger rounded-0 text-white"><span>DELETE</span></a></td>
       </tr>
-
+  <% } %>
     </tbody>
   </table>
 </div>
-
-
-
-
-
-
-
-
 
 
 <!-- Add New Category Modal -->
@@ -300,9 +217,9 @@
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                   <p>Category:</p>
                   <select class="form-control p-0" name="category">
-
-                        <option value="<%= categories[i]._id %>">categories[i].name %></option>
-
+                     <% for(let i=0; i< categories.length; i++){ %>
+                        <option value="<%= categories[i]._id %>"><%= categories[i].name %></option>
+                     <% } %>
                   </select>
                 </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -325,7 +242,8 @@
         </div>
       </div>
     </div>
-  
+  <% } %>
+ <% } %>
 <!--  footer -->
 <%- include('partials/_footer') -%>
 
